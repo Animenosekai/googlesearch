@@ -29,5 +29,5 @@ jobs:
         python -m pip install pylint
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Lint with pylint
-      run: pylint googlesearch
+      run: pylint pygooglesearch
       continue-on-error: true

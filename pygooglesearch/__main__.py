@@ -1,14 +1,14 @@
 """
-File containing the CLI version of googlesearch
+File containing the CLI version of pygooglesearch
 """
 
 import argparse
 import inquirer
-import googlesearch
+import pygooglesearch
 from urllib.parse import urlparse
 from json import dumps
 
-INPUT_PREFIX = "(\033[90mgooglesearch ~ \033[0m{action}) > "
+INPUT_PREFIX = "(\033[90mpygooglesearch ~ \033[0m{action}) > "
 
 def boolean_type(value):
     """
@@ -17,9 +17,9 @@ def boolean_type(value):
     return value in {'yes', 'true', 't', 'y', '1'}
     
 def main():
-    parser = argparse.ArgumentParser(prog='googlesearch', description='This module lets you use Google Searching capabilities right from your code')
+    parser = argparse.ArgumentParser(prog='pygooglesearch', description='This module lets you use Google Searching capabilities right from your code')
 
-    parser.add_argument('--version', '-v', action='version', version=googlesearch.__version__)
+    parser.add_argument('--version', '-v', action='version', version=pygooglesearch.__version__)
     
     # optional
     parser.add_argument('--query', '-q', type=str, help='The string query to search on Google (If not specified, the interactive mode will be enabled)', required=False, default=None)
@@ -31,9 +31,9 @@ def main():
 
     if args.query is not None:
         try:
-            result = googlesearch.Search(query=args.query, parser=args.parser, retry_count=args.retry_count).as_dict()
+            result = pygooglesearch.Search(query=args.query, parser=args.parser, retry_count=args.retry_count).as_dict()
             result["success"] = True
-        except googlesearch.exceptions.GoogleSearchException:
+        except pygooglesearch.exceptions.pygooglesearchException:
             result = {"success": False}
         if args.minify:
             print(dumps(result, separators=(",", ":")))
@@ -41,7 +41,7 @@ def main():
             print(dumps(result, indent=4))
     else:
         while True:
-            print("\033[96mEnter '.quit' to exit googlesearch\033[0m")
+            print("\033[96mEnter '.quit' to exit pygooglesearch\033[0m")
             answers = inquirer.prompt([
                 inquirer.Text(
                     name='query',
@@ -50,7 +50,7 @@ def main():
             ])
             if answers["query"] == ".quit":
                 break
-            result = googlesearch.Search(query=answers["query"], parser=args.parser, retry_count=args.retry_count)
+            result = pygooglesearch.Search(query=answers["query"], parser=args.parser, retry_count=args.retry_count)
             print("")
             try:
                 answers = inquirer.prompt([
@@ -61,7 +61,7 @@ def main():
                         carousel=True
                     )
                 ])
-            except googlesearch.exceptions.GoogleSearchException:
+            except pygooglesearch.exceptions.pygooglesearchException:
                 print("\033[90mAn error occured while searching up \033[0m" + str(answers["query"]) + " \033[90mon Google\033[0m")
                 continue
             if answers["chosen"] == "Quit":

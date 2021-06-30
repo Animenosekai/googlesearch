@@ -1,10 +1,10 @@
 """
-File containing the different classes used in googlesearch
+File containing the different classes used in pygooglesearch
 """
 
 from urllib.parse import urlparse, parse_qsl
 from bs4 import BeautifulSoup
-from googlesearch.constants import BASE
+from pygooglesearch.constants import BASE
 
 class SearchResultElement():
     def __init__(self, resultobj: BeautifulSoup) -> None:

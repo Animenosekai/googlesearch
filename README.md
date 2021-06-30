@@ -1,20 +1,20 @@
-# `googlesearch`
+# `pygooglesearch`
 
-> `googlesearch` lets you use Google Searching capabilities right from your Python code or from your CLI
+> `pygooglesearch` lets you use Google Searching capabilities right from your Python code or from your CLI
 
 ***Make any Google Search right from Python!***
 
-[![PyPI version](https://badge.fury.io/py/googlesearch.svg)](https://pypi.org/project/googlesearch/)
-[![PyPI - Downloads](https://img.shields.io/pypi/dm/googlesearch)](https://pypistats.org/packages/googlesearch)
-[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/googlesearch)](https://pypi.org/project/googlesearch/)
-[![PyPI - Status](https://img.shields.io/pypi/status/googlesearch)](https://pypi.org/project/googlesearch/)
-[![GitHub - License](https://img.shields.io/github/license/Animenosekai/googlesearch)](https://github.com/Animenosekai/googlesearch/blob/master/LICENSE)
-[![GitHub top language](https://img.shields.io/github/languages/top/Animenosekai/googlesearch)](https://github.com/Animenosekai/googlesearch)
-[![CodeQL Checks Badge](https://github.com/Animenosekai/googlesearch/workflows/CodeQL%20Python%20Analysis/badge.svg)](https://github.com/Animenosekai/googlesearch/actions?query=workflow%3ACodeQL)
-[![Pytest](https://github.com/Animenosekai/googlesearch/actions/workflows/pytest.yml/badge.svg)](https://github.com/Animenosekai/googlesearch/actions/workflows/pytest.yml)
-![Code Size](https://img.shields.io/github/languages/code-size/Animenosekai/googlesearch)
-![Repo Size](https://img.shields.io/github/repo-size/Animenosekai/googlesearch)
-![Issues](https://img.shields.io/github/issues/Animenosekai/googlesearch)
+[![PyPI version](https://badge.fury.io/py/pygooglesearch.svg)](https://pypi.org/project/pygooglesearch/)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/pygooglesearch)](https://pypistats.org/packages/pygooglesearch)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pygooglesearch)](https://pypi.org/project/pygooglesearch/)
+[![PyPI - Status](https://img.shields.io/pypi/status/pygooglesearch)](https://pypi.org/project/pygooglesearch/)
+[![GitHub - License](https://img.shields.io/github/license/Animenosekai/pygooglesearch)](https://github.com/Animenosekai/pygooglesearch/blob/master/LICENSE)
+[![GitHub top language](https://img.shields.io/github/languages/top/Animenosekai/pygooglesearch)](https://github.com/Animenosekai/pygooglesearch)
+[![CodeQL Checks Badge](https://github.com/Animenosekai/pygooglesearch/workflows/CodeQL%20Python%20Analysis/badge.svg)](https://github.com/Animenosekai/pygooglesearch/actions?query=workflow%3ACodeQL)
+[![Pytest](https://github.com/Animenosekai/pygooglesearch/actions/workflows/pytest.yml/badge.svg)](https://github.com/Animenosekai/pygooglesearch/actions/workflows/pytest.yml)
+![Code Size](https://img.shields.io/github/languages/code-size/Animenosekai/pygooglesearch)
+![Repo Size](https://img.shields.io/github/repo-size/Animenosekai/pygooglesearch)
+![Issues](https://img.shields.io/github/issues/Animenosekai/pygooglesearch)
 
 ## Getting Started
 
@@ -32,28 +32,28 @@ Incompatible versions:     2
 
 According to Vermin, Python 3.2 is needed
 
-Always check if your Python version works with `googlesearch` before using it in production
+Always check if your Python version works with `pygooglesearch` before using it in production
 
 ## Installing
 
 ### Option 1: From PyPI
 
 ```bash
-pip install googlesearch
+pip install pygooglesearch
 ```
 
 ### Option 2: From Git
 
 ```bash
-pip install https://github.com/Animenosekai/googlesearch
+pip install https://github.com/Animenosekai/pygooglesearch
 ```
 
 You can check if you successfully installed it by printing out its version:
 
 ```bash
-$ python -c "import googlesearch; print(googlesearch.__version__)"
+$ python -c "import pygooglesearch; print(pygooglesearch.__version__)"
 # output:
-googlesearch v1.0
+pygooglesearch v1.0
 ```
 
 <!--If a CLI version is available-->
@@ -61,17 +61,17 @@ googlesearch v1.0
 or just:
 
 ```bash
-$ googlesearch --version
+$ pygooglesearch --version
 # output:
-googlesearch v1.0
+pygooglesearch v1.0
 ```
 
 ## Usage
 
-You can use googlesearch in Python by importing it in your script:
+You can use pygooglesearch in Python by importing it in your script:
 
 ```python
->>> from googlesearch import Search
+>>> from pygooglesearch import Search
 >>> python_results = Search("Python")
 >>> python_results.results
 [<SearchResult title="Python.org" (www.python.org)>, <SearchResult title="Python" ()>, <SearchResult title="Python (langage) — Wikipédia" (fr.wikipedia.org › wiki › Python_(langage))>, ...]
@@ -79,10 +79,10 @@ You can use googlesearch in Python by importing it in your script:
 
 ### CLI usage
 
-You can use googlesearch in other apps by accessing it through the CLI version:
+You can use pygooglesearch in other apps by accessing it through the CLI version:
 
 ```bash
-$ googlesearch --query Python
+$ pygooglesearch --query Python
 {
     "query": "Python",
     "results": [
@@ -108,9 +108,9 @@ $ googlesearch --query Python
 An interactive version of the CLI is also available
 
 ```bash
-$ googlesearch
-Enter '.quit' to exit googlesearch
-[?] (googlesearch ~ Query) > : ... # enter your query
+$ pygooglesearch
+Enter '.quit' to exit pygooglesearch
+[?] (pygooglesearch ~ Query) > : ... # enter your query
 
 [?] What do you want to do?: # select the result with your keyboard's arrows and [enter]
 
@@ -138,15 +138,15 @@ When you initialize it with `Search()`, it takes a `query` as the required param
 
 It will only load and parse the website when `results` or `related_searches` is called.
 
-`parser` is the `BeautifulSoup` parser used to parse the website and `retry_count` is a positive integer representing the number of retries done before raising an exception (useful as `googlesearch` seems to fail sometimes).
+`parser` is the `BeautifulSoup` parser used to parse the website and `retry_count` is a positive integer representing the number of retries done before raising an exception (useful as `pygooglesearch` seems to fail sometimes).
 
-`results` is a list of `googlesearch.models.SearchResultElement`.
+`results` is a list of `pygooglesearch.models.SearchResultElement`.
 
 `related_searches` is a list of `Search` elements.
 
 ## SearchResultElement
 
-This class represents a result and is initialized by `googlesearch`.
+This class represents a result and is initialized by `pygooglesearch`.
 
 It holds the following information:
 
@@ -161,7 +161,7 @@ Every class has the `as_dict` function which converts the object into a dictiona
 
 ### Exceptions
 
-All of the exceptions inherit from the `GoogleSearchException` exception.
+All of the exceptions inherit from the `pygooglesearchException` exception.
 
 You can find a list of exceptions in the `exceptions.py` file
 
