@@ -15,7 +15,7 @@ setup(
     url = "https://github.com/Animenosekai/googlesearch",
     download_url = "https://github.com/Animenosekai/googlesearch/archive/v1.0.0.tar.gz",
     keywords = ['python', 'Anime no Sekai', "animenosekai", "googlesearch"],
-    install_requires = ['beautifulsoup4', 'requests', 'pyuseragents'],
+    install_requires = ['beautifulsoup4', 'requests', 'pyuseragents', 'inquirer'],
     classifiers = ['Development Status :: 5 - Production/Stable', 'License :: OSI Approved :: MIT License', 'Programming Language :: Python :: 3', 'Programming Language :: Python :: 3.2', 'Programming Language :: Python :: 3.3', 'Programming Language :: Python :: 3.4', 'Programming Language :: Python :: 3.5', 'Programming Language :: Python :: 3.6', 'Programming Language :: Python :: 3.7', 'Programming Language :: Python :: 3.8', 'Programming Language :: Python :: 3.9'],
     long_description = readme_description,
     long_description_content_type = "text/markdown",

@@ -170,6 +170,7 @@ Feel free to use it in production if you feel like it is suitable for your produ
 - [beautifulsoup4](https://pypi.org/project/beautifulsoup4/) - To parse the HTML
 - [requests](https://github.com/psf/requests) - To make HTTP requests
 - [pyuseragents](https://github.com/Animenosekai/useragents) - To create the `User-Agent` HTTP header
+- [inquirer](https://github.com/magmax/python-inquirer) - To make a beautiful CLI interface
 
 ## Authors
 
