@@ -1,4 +1,4 @@
-# `pygooglesearch`
+# `pygooglesearch` (originally: `googlesearch`)
 
 > `pygooglesearch` lets you use Google Searching capabilities right from your Python code or from your CLI
 
@@ -8,13 +8,13 @@
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/pygooglesearch)](https://pypistats.org/packages/pygooglesearch)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pygooglesearch)](https://pypi.org/project/pygooglesearch/)
 [![PyPI - Status](https://img.shields.io/pypi/status/pygooglesearch)](https://pypi.org/project/pygooglesearch/)
-[![GitHub - License](https://img.shields.io/github/license/Animenosekai/pygooglesearch)](https://github.com/Animenosekai/pygooglesearch/blob/master/LICENSE)
-[![GitHub top language](https://img.shields.io/github/languages/top/Animenosekai/pygooglesearch)](https://github.com/Animenosekai/pygooglesearch)
-[![CodeQL Checks Badge](https://github.com/Animenosekai/pygooglesearch/workflows/CodeQL%20Python%20Analysis/badge.svg)](https://github.com/Animenosekai/pygooglesearch/actions?query=workflow%3ACodeQL)
-[![Pytest](https://github.com/Animenosekai/pygooglesearch/actions/workflows/pytest.yml/badge.svg)](https://github.com/Animenosekai/pygooglesearch/actions/workflows/pytest.yml)
-![Code Size](https://img.shields.io/github/languages/code-size/Animenosekai/pygooglesearch)
-![Repo Size](https://img.shields.io/github/repo-size/Animenosekai/pygooglesearch)
-![Issues](https://img.shields.io/github/issues/Animenosekai/pygooglesearch)
+[![GitHub - License](https://img.shields.io/github/license/Animenosekai/googlesearch)](https://github.com/Animenosekai/googlesearch/blob/master/LICENSE)
+[![GitHub top language](https://img.shields.io/github/languages/top/Animenosekai/googlesearch)](https://github.com/Animenosekai/googlesearch)
+[![CodeQL Checks Badge](https://github.com/Animenosekai/googlesearch/workflows/CodeQL%20Python%20Analysis/badge.svg)](https://github.com/Animenosekai/googlesearch/actions?query=workflow%3ACodeQL)
+[![Pytest](https://github.com/Animenosekai/googlesearch/actions/workflows/pytest.yml/badge.svg)](https://github.com/Animenosekai/googlesearch/actions/workflows/pytest.yml)
+![Code Size](https://img.shields.io/github/languages/code-size/Animenosekai/googlesearch)
+![Repo Size](https://img.shields.io/github/repo-size/Animenosekai/googlesearch)
+![Issues](https://img.shields.io/github/issues/Animenosekai/googlesearch)
 
 ## Getting Started
 
@@ -45,7 +45,7 @@ pip install pygooglesearch
 ### Option 2: From Git
 
 ```bash
-pip install https://github.com/Animenosekai/pygooglesearch
+pip install https://github.com/Animenosekai/googlesearch
 ```
 
 You can check if you successfully installed it by printing out its version:
