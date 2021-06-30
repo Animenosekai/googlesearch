@@ -159,6 +159,12 @@ It holds the following information:
 
 Every class has the `as_dict` function which converts the object into a dictionary. For `Search`, the as_dict function will convert the other `Search` objects in `related_search` to a string with the query.
 
+### Exceptions
+
+All of the exceptions inherit from the `GoogleSearchException` exception.
+
+You can find a list of exceptions in the `exceptions.py` file
+
 ## Deployment
 
 This module is currently in development and might contain bugs.

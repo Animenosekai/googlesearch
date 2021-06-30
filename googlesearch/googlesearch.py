@@ -88,6 +88,8 @@ class Search():
             
             self.loaded = True
             self._response = str(website)
+        except GoogleSearchException as e:
+            raise e
         except Exception as e:
             raise ParsingError("An error occured while parsing Google Search results (error: " + str(e) + ")")
 
