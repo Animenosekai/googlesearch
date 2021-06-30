@@ -1,1 +1,1 @@
-recursive-include module_name/ *
+recursive-include googlesearch/ *
