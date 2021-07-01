@@ -4,7 +4,7 @@ from googlesearch.models import SearchResultElement
 
 def test_search():
     print("[test] --> Testing Search")
-    python = Search("Python")
+    python = Search("Python", retry_count=10)
     assert python.query == "Python"
     assert python._query == "Python"
     assert Search("How is the weather in Tokyo?")._query == "How%20is%20the%20weather%20in%20Tokyo%3F"
