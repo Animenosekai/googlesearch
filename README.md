@@ -57,7 +57,7 @@ You can check if you successfully installed it by printing out its version:
 ```bash
 $ python -c "import googlesearch; print(googlesearch.__version__)"
 # output:
-googlesearch v1.0
+googlesearch v1.1.0
 ```
 
 <!--If a CLI version is available-->
@@ -67,7 +67,7 @@ or just:
 ```bash
 $ googlesearch --version
 # output:
-googlesearch v1.0
+googlesearch v1.1.0
 ```
 
 ## Usage
@@ -124,6 +124,13 @@ Enter '.quit' to exit googlesearch
 Description: # the site's description
 URL: ... # site's URL
 Related Searches: # a max of 3 related searches
+```
+
+**You can get help on this version by using:**
+
+```bash
+$ googlesearch --help
+usage: googlesearch [-h] [--version] [--query QUERY] [--langua...
 ```
 
 ### As a Python module
