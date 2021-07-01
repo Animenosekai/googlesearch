@@ -4,10 +4,10 @@
 
 ***Make any Google Search right from Python!***
 
-[![PyPI version](https://badge.fury.io/py/googlesearch.svg)](https://pypi.org/project/googlesearch/)
-[![PyPI - Downloads](https://img.shields.io/pypi/dm/googlesearch)](https://pypistats.org/packages/googlesearch)
-[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/googlesearch)](https://pypi.org/project/googlesearch/)
-[![PyPI - Status](https://img.shields.io/pypi/status/googlesearch)](https://pypi.org/project/googlesearch/)
+[![PyPI version](https://badge.fury.io/py/python-googlesearch.svg)](https://pypi.org/project/python-googlesearch/)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/python-googlesearch)](https://pypistats.org/packages/python-googlesearch)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/python-googlesearch)](https://pypi.org/project/python-googlesearch/)
+[![PyPI - Status](https://img.shields.io/pypi/status/python-googlesearch)](https://pypi.org/project/python-googlesearch/)
 [![GitHub - License](https://img.shields.io/github/license/Animenosekai/googlesearch)](https://github.com/Animenosekai/googlesearch/blob/master/LICENSE)
 [![GitHub top language](https://img.shields.io/github/languages/top/Animenosekai/googlesearch)](https://github.com/Animenosekai/googlesearch)
 [![CodeQL Checks Badge](https://github.com/Animenosekai/googlesearch/workflows/CodeQL%20Python%20Analysis/badge.svg)](https://github.com/Animenosekai/googlesearch/actions?query=workflow%3ACodeQL)
