@@ -23,17 +23,19 @@ def main():
     
     # optional
     parser.add_argument('--query', '-q', type=str, help='The string query to search on Google (If not specified, the interactive mode will be enabled)', required=False, default=None)
-    parser.add_argument('--parser', '-p', type=str, help='The HTML parser to use (Default: html.parser)', required=False, default="html.parser")
+    parser.add_argument('--language', '-l', type=str, help='The language to be used to retrieve the results (Default: en)', required=False, default="en")
+    parser.add_argument('--number-of-results', '-n', type=int, help='The number of results to retrieve (Warning: a high number of results might not work) (Default: 10)', required=False, default=10)
     parser.add_argument('--minify', '-m', type=boolean_type, help='If the response in the non-interactive mode should be minified or not (Default: False)', required=False, default=False)
     parser.add_argument('--retry-count', '-r', type=int, help='The number of times the request should be retried before raising an exception (Default: 3)', required=False, default=3)
+    parser.add_argument('--parser', '-p', type=str, help='The HTML parser to use (Default: html.parser)', required=False, default="html.parser")
     
     args = parser.parse_args()
 
     if args.query is not None:
         try:
-            result = googlesearch.Search(query=args.query, parser=args.parser, retry_count=args.retry_count).as_dict()
+            result = googlesearch.Search(query=args.query, language=args.language, number_of_results=args.number_of_results, retry_count=args.retry_count, parser=args.parser).as_dict()
             result["success"] = True
-        except googlesearch.exceptions.googlesearchException:
+        except googlesearch.exceptions.GoogleSearchException:
             result = {"success": False}
         if args.minify:
             print(dumps(result, separators=(",", ":")))
@@ -50,7 +52,7 @@ def main():
             ])
             if answers["query"] == ".quit":
                 break
-            result = googlesearch.Search(query=answers["query"], parser=args.parser, retry_count=args.retry_count)
+            result = googlesearch.Search(query=answers["query"], language=args.language, number_of_results=args.number_of_results, retry_count=args.retry_count, parser=args.parser)
             print("")
             try:
                 answers = inquirer.prompt([
@@ -61,7 +63,7 @@ def main():
                         carousel=True
                     )
                 ])
-            except googlesearch.exceptions.googlesearchException:
+            except googlesearch.exceptions.GoogleSearchException:
                 print("\033[90mAn error occured while searching up \033[0m" + str(answers["query"]) + " \033[90mon Google\033[0m")
                 continue
             if answers["chosen"] == "Quit":

@@ -138,11 +138,16 @@ It lets you retrieve the different results/websites (`Search.results`) and the r
 
 This class is lazy loading the results.
 
-When you initialize it with `Search()`, it takes a `query` as the required parameter and the `parser` and `retry_count` as optional parameters.
+When you initialize it with `Search()`, it takes a `query` as the required parameter and the following parameters as optional parameters:
+
+- `language`: The language to request the results in (All of the website won't be in the given language as it is biased by lots of factors, including your IP address location). This needs to be a two-letter ISO 639-1 language code (default: "en")
+- `number_of_results`: The max number of results to be passed to Google Search while requesting the results (This won't give you the **exact** number of results) (default: 10)
+- `retry_count`: A positive integer representing the number of retries done before raising an exception (useful as `googlesearch` seems to fail sometimes) (default: 3)
+- `parser`: The BeautifulSoup parser to use (default: "html.parser")
 
 It will only load and parse the website when `results` or `related_searches` is called.
 
-`parser` is the `BeautifulSoup` parser used to parse the website and `retry_count` is a positive integer representing the number of retries done before raising an exception (useful as `googlesearch` seems to fail sometimes).
+`parser` is the `BeautifulSoup` parser used to parse the website and .
 
 `results` is a list of `googlesearch.models.SearchResultElement`.
 
@@ -165,7 +170,7 @@ Every class has the `as_dict` function which converts the object into a dictiona
 
 ### Exceptions
 
-All of the exceptions inherit from the `googlesearchException` exception.
+All of the exceptions inherit from the `GoogleSearchException` exception.
 
 You can find a list of exceptions in the `exceptions.py` file
 

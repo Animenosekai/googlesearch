@@ -1,5 +1,5 @@
 """
-googlesearch v1.0.0 (Stable)
+googlesearch v1.1.0 (Stable)
 
 © Anime no Sekai — 2021
 """
@@ -10,20 +10,24 @@ from bs4 import BeautifulSoup
 from pyuseragents import random
 
 from googlesearch.utils.cleanup import remove_all
-from googlesearch.exceptions import CleanupError, InvalidParameter, ParsingError, RelatedSearchError, RequestError, ResultsError, googlesearchException
 from googlesearch.models import SearchResultElement
+from googlesearch.exceptions import CleanupError, InvalidParameter, ParsingError, RelatedSearchError, RequestError, ResultsError, GoogleSearchException
 from googlesearch.constants import BASE_URL, CONSENT_VALUE, CLEANUP_TAGS, HEADERS
 
 class Search():
-    def __init__(self, query: str, parser: str = "html.parser", retry_count: int = 3) -> None:
+    def __init__(self, query: str, language: str = "en", number_of_results: int = 10, retry_count: int = 3, parser: str = "html.parser") -> None:
         self.query = str(query)
         self.retry_count = int(retry_count)
-        if self.retry_count <= 0:
-            raise InvalidParameter("'retry_count' cannot be less than or equal to 0")
+        if self.retry_count < 1:
+            raise InvalidParameter("'retry_count' cannot be less than 1")
         self.loaded = False
         
         # parameters
         self._query = quote(self.query, safe='')
+        self._language = quote(language, safe='')
+        if number_of_results < 1:
+            raise InvalidParameter("'number_of_results' cannot be less than 1")
+        self._max_number_of_results = (int(number_of_results) - 1 if number_of_results >= 2 else 1)
         self._headers = HEADERS.copy()
         self._headers["User-Agent"] = random()
         self._parser = str(parser)
@@ -40,7 +44,7 @@ class Search():
                 try:
                     self.load()
                     break
-                except googlesearchException as e:
+                except GoogleSearchException as e:
                     if i >= self.retry_count:
                         raise e
                     continue
@@ -49,7 +53,7 @@ class Search():
 
     def load(self):
         try:
-            response = get(BASE_URL.format(query=self._query), headers=self._headers, cookies={"CONSENT": CONSENT_VALUE})
+            response = get(BASE_URL.format(query=self._query, language=self._language, number=str(self._max_number_of_results)), headers=self._headers, cookies={"CONSENT": CONSENT_VALUE})
             if response.status_code >= 400:
                 raise RequestError("Google Returned Status Code: " + str(response.status_code))
         except:
@@ -64,7 +68,7 @@ class Search():
                 for tag in CLEANUP_TAGS:
                     remove_all(website, tag)
             except Exception as e:
-                raise CleanupError("An error occured while cleaning up the retrieved webpage (error: " + str(e) + ")")
+                raise CleanupError("An error occured while cleaning up the retrieved webpage (error: {err})".format(err=str(e)))
 
             # retrieving
             try:
@@ -75,7 +79,11 @@ class Search():
                 for element in set(_related_history):
                     self._related_searches.append(Search(element, parser=self._parser, retry_count=self.retry_count))
             except Exception as e:
-                raise RelatedSearchError("An error occured while parsing the related searches (error: " + str(e) + ")")
+                if self._max_number_of_results > 95:
+                    extra_error = " This error might come from the high number of results asked for. "
+                else:
+                    extra_error = ""
+                raise RelatedSearchError("An error occured while parsing the related searches.{extra}(error: {err})".format(extra=extra_error, err=str(e)))
 
             try:
                 for result in website.select("#main > div > div"):
@@ -84,14 +92,14 @@ class Search():
                     except Exception:
                         continue
             except Exception as e:
-                raise ResultsError("An error occured while parsing the results (error: " + str(e) + ")")
+                raise ResultsError("An error occured while parsing the results (error: {err})").format(err=str(e))
             
             self.loaded = True
             self._response = str(website)
-        except googlesearchException as e:
+        except GoogleSearchException as e:
             raise e
         except Exception as e:
-            raise ParsingError("An error occured while parsing Google Search results (error: " + str(e) + ")")
+            raise ParsingError("An error occured while parsing Google Search results (error: {err})").format(err=str(e))
 
     # properties declaration
 

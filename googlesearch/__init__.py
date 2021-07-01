@@ -1,6 +1,6 @@
 """
 googlesearch\n
-Catchphrase
+Make any Google Search right from Python!
 
 © Anime no Sekai — 2021
 """
@@ -16,7 +16,7 @@ __author__      = 'Anime no Sekai'
 __copyright__   = 'Copyright 2021, googlesearch'
 __credits__     = ['animenosekai']
 __license__     = 'MIT License'
-__version__     = 'googlesearch v1.0.0'
+__version__     = 'googlesearch v1.1.0'
 __maintainer__  = 'Anime no Sekai'
 __email__       = 'niichannomail@gmail.com'
 __status__      = 'Stable'
