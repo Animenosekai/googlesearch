@@ -1,5 +1,5 @@
 """
-pygooglesearch v1.0.0 (Stable)
+googlesearch v1.0.0 (Stable)
 
 © Anime no Sekai — 2021
 """
@@ -9,10 +9,10 @@ from requests import get
 from bs4 import BeautifulSoup
 from pyuseragents import random
 
-from pygooglesearch.utils.cleanup import remove_all
-from pygooglesearch.exceptions import CleanupError, InvalidParameter, ParsingError, RelatedSearchError, RequestError, ResultsError, pygooglesearchException
-from pygooglesearch.models import SearchResultElement
-from pygooglesearch.constants import BASE_URL, CONSENT_VALUE, CLEANUP_TAGS, HEADERS
+from googlesearch.utils.cleanup import remove_all
+from googlesearch.exceptions import CleanupError, InvalidParameter, ParsingError, RelatedSearchError, RequestError, ResultsError, googlesearchException
+from googlesearch.models import SearchResultElement
+from googlesearch.constants import BASE_URL, CONSENT_VALUE, CLEANUP_TAGS, HEADERS
 
 class Search():
     def __init__(self, query: str, parser: str = "html.parser", retry_count: int = 3) -> None:
@@ -40,7 +40,7 @@ class Search():
                 try:
                     self.load()
                     break
-                except pygooglesearchException as e:
+                except googlesearchException as e:
                     if i >= self.retry_count:
                         raise e
                     continue
@@ -88,7 +88,7 @@ class Search():
             
             self.loaded = True
             self._response = str(website)
-        except pygooglesearchException as e:
+        except googlesearchException as e:
             raise e
         except Exception as e:
             raise ParsingError("An error occured while parsing Google Search results (error: " + str(e) + ")")

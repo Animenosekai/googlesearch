@@ -1,1 +1,1 @@
-recursive-include pygooglesearch/ *
+recursive-include googlesearch/ *

@@ -1,20 +1,20 @@
 """
-File containing the different exceptions which can be raised in pygooglesearch
+File containing the different exceptions which can be raised in googlesearch
 """
 
-class pygooglesearchException(Exception):
+class googlesearchException(Exception):
     def __init__(self, *args: object) -> None:
         super().__init__(*args)
 
-class InvalidParameter(pygooglesearchException):
+class InvalidParameter(googlesearchException):
     def __init__(self, *args: object) -> None:
         super().__init__(*args)
 
-class RequestError(pygooglesearchException):
+class RequestError(googlesearchException):
     def __init__(self, *args: object) -> None:
         super().__init__(*args)
 
-class ParsingError(pygooglesearchException):
+class ParsingError(googlesearchException):
     def __init__(self, *args: object) -> None:
         super().__init__(*args)
 

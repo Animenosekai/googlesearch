@@ -1,6 +1,6 @@
-import pygooglesearch
-from pygooglesearch import Search
-from pygooglesearch.models import SearchResultElement
+import googlesearch
+from googlesearch import Search
+from googlesearch.models import SearchResultElement
 
 def test_search():
     print("[test] --> Testing Search")
