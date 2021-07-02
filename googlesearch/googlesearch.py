@@ -27,7 +27,7 @@ class Search():
         self._language = quote(language, safe='')
         if number_of_results < 1:
             raise InvalidParameter("'number_of_results' cannot be less than 1")
-        self._max_number_of_results = (int(number_of_results) - 1 if number_of_results >= 2 else 1)
+        self._requested_number_of_results = int(number_of_results)
         self._headers = HEADERS.copy()
         self._headers["User-Agent"] = random()
         self._parser = str(parser)
@@ -53,7 +53,7 @@ class Search():
 
     def load(self):
         try:
-            response = get(BASE_URL.format(query=self._query, language=self._language, number=str(self._max_number_of_results)), headers=self._headers, cookies={"CONSENT": CONSENT_VALUE})
+            response = get(BASE_URL.format(query=self._query, language=self._language, number=str((int(self._requested_number_of_results) - 1 if self._requested_number_of_results >= 2 else 1))), headers=self._headers, cookies={"CONSENT": CONSENT_VALUE})
             if response.status_code >= 400:
                 raise RequestError("Google Returned Status Code: " + str(response.status_code))
         except:
@@ -79,7 +79,7 @@ class Search():
                 for element in set(_related_history):
                     self._related_searches.append(Search(element, parser=self._parser, retry_count=self.retry_count))
             except Exception as e:
-                if self._max_number_of_results > 95:
+                if self._requested_number_of_results > 95:
                     extra_error = " This error might come from the high number of results asked for. "
                 else:
                     extra_error = ""
@@ -129,7 +129,7 @@ class Search():
         return {
             "query": self.query,
             "language": self._language,
-            "requestedNumberOfResults": self._max_number_of_results,
+            "requestedNumberOfResults": self._requested_number_of_results,
             "results": [elem.as_dict() for elem in self.results],
             "relatedSearches": [elem.query for elem in self.related_searches]
         }
