@@ -57,7 +57,7 @@ You can check if you successfully installed it by printing out its version:
 ```bash
 $ python -c "import googlesearch; print(googlesearch.__version__)"
 # output:
-googlesearch v1.1.0
+googlesearch v1.1.1
 ```
 
 <!--If a CLI version is available-->
@@ -67,7 +67,7 @@ or just:
 ```bash
 $ googlesearch --version
 # output:
-googlesearch v1.1.0
+googlesearch v1.1.1
 ```
 
 ## Usage

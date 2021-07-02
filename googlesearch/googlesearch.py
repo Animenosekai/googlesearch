@@ -1,5 +1,5 @@
 """
-googlesearch v1.1.0 (Stable)
+googlesearch v1.1.1 (Stable)
 
 © Anime no Sekai — 2021
 """
