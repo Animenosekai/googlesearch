@@ -129,7 +129,7 @@ class Search():
         return {
             "query": self.query,
             "language": self._language,
-            "numberOfResults": self._max_number_of_results,
+            "requestedNumberOfResults": self._max_number_of_results,
             "results": [elem.as_dict() for elem in self.results],
             "relatedSearches": [elem.query for elem in self.related_searches]
         }
